@@ -1,3 +1,10 @@
+/**
+ * Esta clase es donde se crean los atributos que heredaran
+ * las clases hijas
+ * 
+ * @author: Dulce Ambrosio
+ * @version: 14/10/2023
+ */
 public class Jugador {
 
     protected String nombre;
@@ -6,7 +13,9 @@ public class Jugador {
     protected int aces;
     protected int total_servicios;
 
-    // Constructor
+    /*
+     * Class constructor
+     */
     public Jugador(String nombre, String pais, int errores, int aces, int total_servicios) {
         this.nombre = nombre;
         this.pais = pais;
@@ -15,7 +24,9 @@ public class Jugador {
         this.total_servicios = total_servicios;
     }
 
-    // Getters y Setters
+    /*
+     * setters y getters
+     */
     public String getNombre() {
         return nombre;
     }
@@ -56,19 +67,33 @@ public class Jugador {
         this.total_servicios = total_servicios;
     }
 
+    /**
+     * Método para calcular la efectividad del jugador
+     * 
+     * @param param1 los valores son de tipo int
+     * @return devuelve un entero
+     */
     public int calcularEfectividad() {
         return (((-errores) * 100 / (+errores)) + aces * 100 / total_servicios);
     }
 
+    /**
+     * Método para mostrar los datos del jugador
+     * 
+     * @param param1 los valores son de tipo String
+     * @return devuelve valores String
+     */
     public String toString() {
         return "Nomrbe: " + getNombre() + "País: " + getPais() + "Errores: " + getErrores() + "Aces : " + getAces()
                 + "Total de Servicios: " + getTotal_servicios();
     }
 
-    public void menuSecundario() {
-
-    }
-
+    /**
+     * Método para calcular crear el archivo .csv
+     * 
+     * @param param1 los valores son de tipo string
+     * @return devuelve un valor string
+     */
     public String toCSVString() {
         // Construye la cadena CSV con los datos del jugador
         String tipo = this instanceof Pasador ? "Pasador"

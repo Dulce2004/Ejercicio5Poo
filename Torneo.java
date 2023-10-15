@@ -1,3 +1,10 @@
+
+/**
+ * Esta clase es donde se crea la interacción con el usuario
+ * 
+ * @author: Dulce Ambrosio - 231143 , sección 20
+ * @version: 14/10/2023
+ */
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -7,9 +14,9 @@ import java.util.Scanner;
 public class Torneo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        List<Jugador> jugadores = new ArrayList<>();
+        List<Jugador> jugadores = new ArrayList<>(); // lista de jugadores
 
-        while (true) {
+        while (true) { // creación del menú principal
             System.out.println("Bienvenido al menú");
             System.out.println("1. Agregar Jugador");
             System.out.println("2. Mostrar todos los jugadores");
@@ -19,7 +26,7 @@ public class Torneo {
             System.out.println("Elija la opción que desee: ");
             int opcion = scanner.nextInt();
 
-            switch (opcion) {
+            switch (opcion) { // creación del switch para las opciones
                 case 1:
                     System.out.println("----------------------------------------------------");
                     System.out.println("INGRESE LOS DATOS QUE SE LE PIDE");
@@ -34,17 +41,18 @@ public class Torneo {
                     System.out.println("Total de servicios: ");
                     int total_servicios = scanner.nextInt();
 
-                    Jugador jugador = new Jugador(nombre, pais, errores, aces, total_servicios);
+                    Jugador jugador = new Jugador(nombre, pais, errores, aces, total_servicios); // crear un objeto
+                                                                                                 // jugador
                     jugadores.add(jugador);
 
-                    System.out.println("Que tipo de jugador es: ");
+                    System.out.println("Que tipo de jugador es: "); // opciones para saber que tipo de jugador es
                     System.out.println("1. Pasador");
                     System.out.println("2. Líbero");
                     System.out.println("3. Auxiliar u Opuesto");
                     System.out.println("4. Salir");
                     int opcion2 = scanner.nextInt();
 
-                    if (jugadores.isEmpty()) {
+                    if (jugadores.isEmpty()) { // ciclo para que se guarden los datos especificos de cada jugador
                         System.out.println("No se han ingresado jugadores");
                     } else if (opcion2 == 1) {
                         System.out.println("Pases: ");
@@ -73,7 +81,7 @@ public class Torneo {
                         break;
                     }
                     break;
-                case 2:
+                case 2: // mostrar los jugadores ingresador al sistema
                     System.out.println("----------------------------------------------------");
                     System.out.println("Lista de jugadores:");
                     for (Jugador jugador2 : jugadores) {
@@ -83,7 +91,7 @@ public class Torneo {
                         System.out.println("Aces: " + jugador2.getAces());
                         System.out.println("Total de servicios: " + jugador2.getTotal_servicios());
 
-                        if (jugador2 instanceof Pasador) {
+                        if (jugador2 instanceof Pasador) { // colocar que tipo de jugador es
                             Pasador pasador = (Pasador) jugador2;
                             System.out.println("Tipo de jugador: Pasador");
                             System.out.println("Pases: " + pasador.getPases());
@@ -101,7 +109,7 @@ public class Torneo {
                         }
                     }
                     break;
-                case 3:
+                case 3: // mostrar los tres mejores líberos si esque hubiera
                     System.out.println("----------------------------------------------------");
                     List<Libero> mejoresLiberos = new ArrayList<>();
                     if (jugadores.isEmpty()) {
@@ -131,7 +139,7 @@ public class Torneo {
                         }
                     }
                     break;
-                case 4:
+                case 4: // mostrar los pasadores con más del 80% de efectividad si esque hubiera
                     System.out.println("----------------------------------------------------");
                     if (jugadores.isEmpty()) {
                         System.out.println("No hay jugadores con más del 80% de efectividad");
@@ -151,7 +159,7 @@ public class Torneo {
                                 + contadorPasadoresEfectivos);
                     }
                     break;
-                case 5:
+                case 5: // finalizar el sistema y crear el .csv
                     System.out.println("----------------------------------------------------");
                     System.out.println("Cerrando Sistema...");
                     scanner.close();
